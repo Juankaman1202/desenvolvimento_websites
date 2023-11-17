@@ -7,10 +7,18 @@ const app = express()
 
 const CaminhoBase = path.join(__dirname, "templates") 
 
-application.get('/' , (requisicao,respota) =>{ 
+app.get('/usuarios/:id' , (requisicao , resposta) =>{
+    const id = requisicao.params.id
+    
+    console.log(`Acessando dados do usuario ${id}`)
+    
+    resposta.sendFile(`${CaminhoBase}/usuarios.html`)
+})
+
+app.get('/' , (requisicao,respota) =>{ 
     respota.sendFile(`${CaminhoBase}/index.html`)
 })
 
-application.listen(3000, () =>{
+app.listen(3000, () =>{
    console.log("servidor rodando na porta 3000!") 
 })  
